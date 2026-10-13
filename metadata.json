@@ -1,0 +1,6 @@
+{
+  "name": "USA Review & Deal Hub - Top Rated US Products",
+  "description": "High-converting US product reviews, independent lab testing, and best deals across health supplements, home appliances, physical goods, and consumer tech.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
