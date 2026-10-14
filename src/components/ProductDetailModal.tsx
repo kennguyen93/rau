@@ -86,6 +86,11 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   src={activeImage}
                   alt={product.name}
                   className="max-h-56 max-w-full object-contain mix-blend-multiply"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    target.onerror = null;
+                    target.src = 'https://images.unsplash.com/photo-1621607512214-68297480165e?w=800&auto=format&fit=crop&q=80';
+                  }}
                 />
               </div>
 
@@ -99,7 +104,16 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                       activeImage === img ? 'border-blue-600 ring-2 ring-blue-300' : 'border-slate-200 hover:border-slate-300'
                     }`}
                   >
-                    <img src={img} alt="thumb" className="w-full h-full object-contain mix-blend-multiply" />
+                    <img 
+                      src={img} 
+                      alt="thumb" 
+                      className="w-full h-full object-contain mix-blend-multiply" 
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        target.onerror = null;
+                        target.src = 'https://images.unsplash.com/photo-1621607512214-68297480165e?w=800&auto=format&fit=crop&q=80';
+                      }}
+                    />
                   </button>
                 ))}
               </div>

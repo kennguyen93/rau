@@ -73,6 +73,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             className="w-full h-52 object-contain rounded-lg mix-blend-multiply group-hover:scale-105 transition-transform duration-300 cursor-pointer"
             onClick={() => onOpenDetails(product)}
             loading="lazy"
+            onError={(e) => {
+              const target = e.currentTarget;
+              target.onerror = null;
+              target.src = 'https://images.unsplash.com/photo-1621607512214-68297480165e?w=800&auto=format&fit=crop&q=80';
+            }}
           />
 
           {/* FLASH DEAL / STOCK URGENCY PILL */}

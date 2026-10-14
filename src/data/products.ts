@@ -1,4 +1,8 @@
 import { Product } from '../types';
+import ultimateCarbonKitImg from '../assets/images/ultimate_carbon_kit.jpg';
+import carbonXProImg from '../assets/images/carbon_x_pro.jpg';
+import voxtrGrowthKitImg from '../assets/images/voxtr_growth_kit.jpg';
+import varangianTrimmerImg from '../assets/images/varangian_trimmer.jpg';
 
 export const PRODUCTS: Product[] = [
   // 1. THỰC PHẨM CHỨC NĂNG (SUPPLEMENTS)
@@ -918,10 +922,10 @@ export const PRODUCTS: Product[] = [
     isFlashDeal: true,
     flashEndsInHours: 6,
     stockLeft: 11,
-    imageUrl: '/src/assets/images/ultimate_carbon_kit_1791876447689.jpg',
+    imageUrl: ultimateCarbonKitImg,
     galleryImages: [
-      '/src/assets/images/ultimate_carbon_kit_1791876447689.jpg',
-      '/src/assets/images/carbon_x_pro_1791876372873.jpg'
+      ultimateCarbonKitImg,
+      carbonXProImg
     ],
     affiliateUrlAmazon: 'https://amazon.com/dp/B0EXAMPLE_TBS1?tag=usareviewhub-20',
     affiliateUrlOfficial: 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda',
@@ -998,10 +1002,10 @@ export const PRODUCTS: Product[] = [
     isFlashDeal: true,
     flashEndsInHours: 5,
     stockLeft: 9,
-    imageUrl: '/src/assets/images/carbon_x_pro_1791876372873.jpg',
+    imageUrl: carbonXProImg,
     galleryImages: [
-      '/src/assets/images/carbon_x_pro_1791876372873.jpg',
-      '/src/assets/images/ultimate_carbon_kit_1791876447689.jpg'
+      carbonXProImg,
+      ultimateCarbonKitImg
     ],
     affiliateUrlAmazon: 'https://amazon.com/dp/B0EXAMPLE_TBS2?tag=usareviewhub-20',
     affiliateUrlOfficial: 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda',
@@ -1077,9 +1081,9 @@ export const PRODUCTS: Product[] = [
     isTopRated: true,
     isFlashDeal: false,
     stockLeft: 15,
-    imageUrl: '/src/assets/images/voxtr_growth_kit_1791876397715.jpg',
+    imageUrl: voxtrGrowthKitImg,
     galleryImages: [
-      '/src/assets/images/voxtr_growth_kit_1791876397715.jpg'
+      voxtrGrowthKitImg
     ],
     affiliateUrlAmazon: 'https://amazon.com/dp/B0EXAMPLE_TBS3?tag=usareviewhub-20',
     affiliateUrlOfficial: 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda',
@@ -1155,9 +1159,9 @@ export const PRODUCTS: Product[] = [
     isTopRated: true,
     isFlashDeal: false,
     stockLeft: 12,
-    imageUrl: '/src/assets/images/varangian_trimmer_1791876418227.jpg',
+    imageUrl: varangianTrimmerImg,
     galleryImages: [
-      '/src/assets/images/varangian_trimmer_1791876418227.jpg'
+      varangianTrimmerImg
     ],
     affiliateUrlAmazon: 'https://amazon.com/dp/B0EXAMPLE_TBS4?tag=usareviewhub-20',
     affiliateUrlOfficial: 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda',
