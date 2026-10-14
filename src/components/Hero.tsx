@@ -161,7 +161,7 @@ export const Hero: React.FC<HeroProps> = ({
                 className="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 font-bold text-sm transition flex items-center gap-2 cursor-pointer"
               >
                 <Percent className="w-4 h-4 text-amber-400" />
-                <span>{lang === 'en' ? 'Browse Active Coupons Vault' : 'Kho Mã Giảm Giá Đang Mở'}</span>
+                <span>{lang === 'en' ? 'Browse Top Tested Deals' : 'Xem Danh Sách Deal Hot'}</span>
               </button>
             </div>
           </div>

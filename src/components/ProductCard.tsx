@@ -184,21 +184,29 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           
           {/* PRIMARY HIGH-CONVERTING BUY BUTTON */}
           <button
-            onClick={() => onOpenOutbound(product, 'amazon')}
+            onClick={() => onOpenOutbound(product, (product.category === 'grooming' || product.brand === 'The Beard Struggle') ? 'official' : 'amazon')}
             className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-700 text-slate-950 font-black text-xs sm:text-sm shadow-md hover:shadow-lg transition transform active:scale-98 flex items-center justify-center gap-2 cursor-pointer animate-pulse-glow"
           >
-            <span>{lang === 'en' ? 'Claim Deal on Amazon US' : 'Mua Ngay Trên Amazon US'}</span>
+            <span>
+              {(product.category === 'grooming' || product.brand === 'The Beard Struggle')
+                ? (lang === 'en' ? 'Get Deal at TheBeardStruggle.com' : 'Truy Cập TheBeardStruggle.com')
+                : (lang === 'en' ? 'Claim Deal on Amazon US' : 'Mua Ngay Trên Amazon US')}
+            </span>
             <ExternalLink className="w-4 h-4 text-slate-950" />
           </button>
 
-          {/* SECONDARY OFFICIAL STORE BUTTON & READ REVIEW */}
+          {/* SECONDARY ROW */}
           <div className="grid grid-cols-2 gap-2">
             <button
-              onClick={() => onOpenOutbound(product, 'official')}
+              onClick={() => onOpenOutbound(product, (product.category === 'grooming' || product.brand === 'The Beard Struggle') ? 'amazon' : 'official')}
               className="py-2 px-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-bold text-[11px] transition flex items-center justify-center gap-1 cursor-pointer"
             >
               <Sparkles className="w-3 h-3 text-amber-400" />
-              <span>{lang === 'en' ? 'Official Site Deal' : 'Trang Chủ Hãng'}</span>
+              <span>
+                {(product.category === 'grooming' || product.brand === 'The Beard Struggle')
+                  ? (lang === 'en' ? 'Check Amazon Price' : 'Xem Giá Amazon')
+                  : (lang === 'en' ? 'Official Site Deal' : 'Trang Chủ Hãng')}
+              </span>
             </button>
 
             <button

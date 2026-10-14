@@ -292,10 +292,14 @@ export const ProductQuiz: React.FC<ProductQuizProps> = ({
 
             <div className="space-y-2">
               <button
-                onClick={() => onOpenOutbound(matchedProduct, 'amazon')}
-                className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-black text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer"
+                onClick={() => onOpenOutbound(matchedProduct, (matchedProduct.category === 'grooming' || matchedProduct.brand === 'The Beard Struggle') ? 'official' : 'amazon')}
+                className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-700 text-slate-950 font-black text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer"
               >
-                <span>{lang === 'en' ? 'Claim Deal on Amazon With This Voucher' : 'Nhận Ưu Đãi Trên Amazon Với Mã Này'}</span>
+                <span>
+                  {(matchedProduct.category === 'grooming' || matchedProduct.brand === 'The Beard Struggle')
+                    ? (lang === 'en' ? 'Claim Deal at TheBeardStruggle.com' : 'Truy Cập TheBeardStruggle.com Nhận Ưu Đãi')
+                    : (lang === 'en' ? 'Claim Deal on Amazon With This Voucher' : 'Nhận Ưu Đãi Trên Amazon Với Mã Này')}
+                </span>
                 <ExternalLink className="w-4 h-4" />
               </button>
 

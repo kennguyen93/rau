@@ -20,7 +20,6 @@ import { ProductDetailModal } from './components/ProductDetailModal';
 import { ComparisonMatrix } from './components/ComparisonMatrix';
 import { ProductQuiz } from './components/ProductQuiz';
 import { OutboundModal } from './components/OutboundModal';
-import { CouponsSection } from './components/CouponsSection';
 import { AffiliateTipsModal } from './components/AffiliateTipsModal';
 import { TrustBadges } from './components/TrustBadges';
 import { Footer } from './components/Footer';
@@ -287,12 +286,6 @@ export default function App() {
           )}
 
         </section>
-
-        {/* 4. ACTIVE COUPON VAULT SECTION */}
-        <CouponsSection
-          onOpenOutbound={handleOpenOutbound}
-          lang={lang}
-        />
 
         {/* 5. TRUST PILLARS & NEWSLETTER ALERT */}
         <TrustBadges

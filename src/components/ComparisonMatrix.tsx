@@ -230,10 +230,14 @@ export const ComparisonMatrix: React.FC<ComparisonMatrixProps> = ({
                     {compareProducts.map((p) => (
                       <td key={p.id} className="p-4 space-y-2">
                         <button
-                          onClick={() => onOpenOutbound(p, 'amazon')}
+                          onClick={() => onOpenOutbound(p, (p.category === 'grooming' || p.brand === 'The Beard Struggle') ? 'official' : 'amazon')}
                           className="w-full py-2 px-3 rounded-lg bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-black text-xs shadow-xs transition flex items-center justify-center gap-1.5 cursor-pointer"
                         >
-                          <span>{lang === 'en' ? 'Check Amazon Price' : 'Xem Giá Amazon'}</span>
+                          <span>
+                            {(p.category === 'grooming' || p.brand === 'The Beard Struggle')
+                              ? (lang === 'en' ? 'Get Deal at TheBeardStruggle.com' : 'Truy Cập TheBeardStruggle.com')
+                              : (lang === 'en' ? 'Check Amazon Price' : 'Xem Giá Amazon')}
+                          </span>
                           <ExternalLink className="w-3.5 h-3.5" />
                         </button>
                         <button
