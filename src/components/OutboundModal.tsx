@@ -30,8 +30,13 @@ export const OutboundModal: React.FC<OutboundModalProps> = ({
   const [copied, setCopied] = useState(false);
   const [countdown, setCountdown] = useState(3);
 
-  const destinationUrl = target === 'amazon' ? product.affiliateUrlAmazon : product.affiliateUrlOfficial;
-  const merchantName = target === 'amazon' ? 'Amazon USA' : `${product.brand} Official Store`;
+  const isTBS = product.brand === 'The Beard Struggle' || product.category === 'grooming';
+  const destinationUrl = isTBS
+    ? (target === 'amazon' ? product.affiliateUrlAmazon : (product.affiliateUrlOfficial || 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda'))
+    : (product.affiliateUrlAmazon || 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda');
+  const merchantName = isTBS
+    ? (target === 'amazon' ? 'Amazon USA' : 'The Beard Struggle Official')
+    : 'Amazon USA';
 
   useEffect(() => {
     // Automatically copy promo code if present

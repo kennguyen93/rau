@@ -2,16 +2,6 @@ import { CouponItem } from '../types';
 
 export const COUPONS: CouponItem[] = [
   {
-    id: 'c-1',
-    code: 'BERBER20',
-    discountText: 'Extra $5 Off + Free Shipping',
-    storeName: 'NutriPeak Official & Amazon',
-    productTarget: 'NutriPeak Liposomal Berberine 1200mg',
-    expiresText: 'Ends in 12 hours',
-    verifiedToday: true,
-    url: 'https://nutripeaklabs.com'
-  },
-  {
     id: 'c-2',
     code: 'AUDIO50',
     discountText: '50% Instant Off Flash Deal',
@@ -20,16 +10,6 @@ export const COUPONS: CouponItem[] = [
     expiresText: 'Limited stock (14 left)',
     verifiedToday: true,
     url: 'https://acoustisyncaudio.com'
-  },
-  {
-    id: 'c-3',
-    code: 'CLEANAIR30',
-    discountText: '$30 Direct Off Instant Coupon',
-    storeName: 'AeroPure Official Store',
-    productTarget: 'AeroPure Pro 500 HEPA Purifier',
-    expiresText: 'Valid through this week',
-    verifiedToday: true,
-    url: 'https://aeropurehome.com'
   },
   {
     id: 'c-4',

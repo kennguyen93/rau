@@ -105,12 +105,12 @@ export const Header: React.FC<HeaderProps> = ({
           {/* LOGO */}
           <div className="flex items-center gap-3">
             <a href="#" className="flex items-center gap-2 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-indigo-600 to-amber-500 flex items-center justify-center text-white font-black text-xl shadow-md group-hover:scale-105 transition-transform">
-                US
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-indigo-600 to-amber-500 flex items-center justify-center text-white font-black text-lg shadow-md group-hover:scale-105 transition-transform">
+                PZ
               </div>
               <div>
                 <div className="font-heading font-black text-xl tracking-tight text-slate-900 flex items-center gap-1.5 leading-none">
-                  PRIME<span className="text-blue-600">REVIEWS</span>
+                  PICKZOID<span className="text-blue-600">.COM</span>
                   <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300">
                     USA 2026
                   </span>

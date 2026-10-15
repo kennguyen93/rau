@@ -89,7 +89,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   onError={(e) => {
                     const target = e.currentTarget;
                     target.onerror = null;
-                    target.src = 'https://images.unsplash.com/photo-1621607512214-68297480165e?w=800&auto=format&fit=crop&q=80';
+                    target.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400"><rect width="100%" height="100%" fill="%23f8fafc"/><rect x="20" y="20" width="560" height="360" rx="16" fill="%23f1f5f9" stroke="%23cbd5e1" stroke-width="2"/><text x="50%" y="45%" font-family="system-ui,sans-serif" font-size="24" font-weight="900" fill="%231e293b" dominant-baseline="middle" text-anchor="middle">⭐ ${encodeURIComponent(product.brand)}</text><text x="50%" y="58%" font-family="system-ui,sans-serif" font-size="15" font-weight="bold" fill="%2364748b" dominant-baseline="middle" text-anchor="middle">${encodeURIComponent(product.shortName)}</text></svg>`;
                   }}
                 />
               </div>
@@ -111,7 +111,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                       onError={(e) => {
                         const target = e.currentTarget;
                         target.onerror = null;
-                        target.src = 'https://images.unsplash.com/photo-1621607512214-68297480165e?w=800&auto=format&fit=crop&q=80';
+                        target.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100%" height="100%" fill="%23f1f5f9"/><text x="50%" y="55%" font-family="system-ui,sans-serif" font-size="12" font-weight="bold" fill="%2364748b" dominant-baseline="middle" text-anchor="middle">${idx + 1}</text></svg>`;
                       }}
                     />
                   </button>
@@ -213,21 +213,9 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   <span>
                     {(product.category === 'grooming' || product.brand === 'The Beard Struggle')
                       ? (lang === 'en' ? 'Claim Deal at TheBeardStruggle.com 🛒' : 'Truy Cập TheBeardStruggle.com 🛒')
-                      : (lang === 'en' ? 'Claim Deal on Amazon USA 🛒' : 'Mua Ngay Trên Amazon USA 🛒')}
+                      : (lang === 'en' ? 'Claim Verified Deal 🛒' : 'Nhận Ưu Đãi Độc Quyền 🛒')}
                   </span>
                   <ExternalLink className="w-4 h-4 text-slate-950" />
-                </button>
-
-                <button
-                  onClick={() => onOpenOutbound(product, (product.category === 'grooming' || product.brand === 'The Beard Struggle') ? 'amazon' : 'official')}
-                  className="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <Sparkles className="w-4 h-4 text-amber-400" />
-                  <span>
-                    {(product.category === 'grooming' || product.brand === 'The Beard Struggle')
-                      ? (lang === 'en' ? 'Check Price on Amazon' : 'Xem Giá Trên Amazon')
-                      : (lang === 'en' ? 'Buy Direct from Official Store (Extra Perks)' : 'Mua Trực Tiếp Trang Chủ Hãng (Quà Độc Quyền)')}
-                  </span>
                 </button>
               </div>
 
@@ -458,22 +446,13 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
           <div className="flex items-center gap-3">
             <button
-              onClick={() => onOpenOutbound(product, (product.category === 'grooming' || product.brand === 'The Beard Struggle') ? 'amazon' : 'official')}
-              className="hidden sm:inline-flex px-4 py-2 rounded-xl bg-slate-900 text-white font-bold text-xs hover:bg-slate-800 transition cursor-pointer"
-            >
-              {(product.category === 'grooming' || product.brand === 'The Beard Struggle')
-                ? (lang === 'en' ? 'Amazon Price' : 'Giá Amazon')
-                : (lang === 'en' ? 'Official Site' : 'Trang Chủ Hãng')}
-            </button>
-
-            <button
               onClick={() => onOpenOutbound(product, (product.category === 'grooming' || product.brand === 'The Beard Struggle') ? 'official' : 'amazon')}
               className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-black text-sm shadow-md transition transform active:scale-95 flex items-center gap-1.5 cursor-pointer"
             >
               <span>
                 {(product.category === 'grooming' || product.brand === 'The Beard Struggle')
                   ? (lang === 'en' ? 'Claim Deal at TheBeardStruggle.com' : 'Truy Cập TheBeardStruggle.com')
-                  : (lang === 'en' ? 'Claim Deal on Amazon' : 'Mua Ngay Trên Amazon')}
+                  : (lang === 'en' ? 'Claim Verified Deal' : 'Nhận Ưu Đãi Trực Tiếp')}
               </span>
               <ExternalLink className="w-4 h-4" />
             </button>

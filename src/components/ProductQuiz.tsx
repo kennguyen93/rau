@@ -298,7 +298,7 @@ export const ProductQuiz: React.FC<ProductQuizProps> = ({
                 <span>
                   {(matchedProduct.category === 'grooming' || matchedProduct.brand === 'The Beard Struggle')
                     ? (lang === 'en' ? 'Claim Deal at TheBeardStruggle.com' : 'Truy Cập TheBeardStruggle.com Nhận Ưu Đãi')
-                    : (lang === 'en' ? 'Claim Deal on Amazon With This Voucher' : 'Nhận Ưu Đãi Trên Amazon Với Mã Này')}
+                    : (lang === 'en' ? 'Claim Exclusive Deal With This Voucher' : 'Nhận Ưu Đãi Độc Quyền Với Mã Này')}
                 </span>
                 <ExternalLink className="w-4 h-4" />
               </button>

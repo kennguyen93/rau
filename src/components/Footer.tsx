@@ -22,11 +22,11 @@ export const Footer: React.FC<FooterProps> = ({
           
           <div className="space-y-3 md:col-span-1">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-600 to-amber-500 flex items-center justify-center text-white font-black text-sm">
-                US
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-600 to-amber-500 flex items-center justify-center text-white font-black text-xs">
+                PZ
               </div>
               <span className="font-heading font-black text-lg text-white tracking-tight">
-                USPRIME<span className="text-blue-500">REVIEWS</span>
+                PICKZOID<span className="text-blue-500">.COM</span>
               </span>
             </div>
             <p className="text-slate-400 text-xs leading-relaxed">
@@ -120,18 +120,18 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="border-t border-slate-800/80 pt-6 space-y-3 text-[11px] text-slate-400 leading-relaxed">
           <div className="p-4 bg-slate-900/60 rounded-xl border border-slate-800">
             <strong className="text-slate-300 uppercase tracking-wide block mb-1">
-              FTC Affiliate Disclosure (Tuân Thủ Luật FTC Hoa Kỳ):
+              FTC Affiliate Disclosure:
             </strong>
             <p>
               {lang === 'en'
-                ? 'USA Prime Reviews is a participant in the Amazon Services LLC Associates Program and various direct merchant affiliate programs. These programs are designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com and merchant web properties. When you purchase through our links, we may receive a commission at no additional cost to you. This does not impact our editorial independence or testing ratings.'
-                : 'Trang web tham gia chương trình tiếp thị liên kết Amazon Associates và các nhà bán lẻ trực tiếp tại Mỹ. Khi người mua click qua liên kết và đặt hàng thành công, chúng tôi có thể nhận được một khoản hoa hồng nhỏ mà người mua hoàn toàn không mất thêm bất kỳ chi phí nào.'}
+                ? 'Pickzoid.com is a participant in the Amazon Services LLC Associates Program and various direct merchant affiliate programs. These programs are designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com and merchant web properties. When you purchase through our links, we may receive a commission at no additional cost to you. This does not impact our editorial independence or testing ratings.'
+                : 'Pickzoid.com tham gia chương trình tiếp thị liên kết Amazon Associates và các nhà bán lẻ trực tiếp tại Mỹ. Khi người mua click qua liên kết và đặt hàng thành công, chúng tôi có thể nhận được một khoản hoa hồng nhỏ mà người mua hoàn toàn không mất thêm bất kỳ chi phí nào.'}
             </p>
           </div>
 
           <div className="p-4 bg-slate-900/60 rounded-xl border border-slate-800">
             <strong className="text-slate-300 uppercase tracking-wide block mb-1">
-              FDA & Health Disclaimer (Miễn Trừ Trách Nhiệm Y Tế):
+              FDA & Health Disclaimer:
             </strong>
             <p>
               {lang === 'en'
@@ -144,7 +144,7 @@ export const Footer: React.FC<FooterProps> = ({
         {/* BOTTOM COPYRIGHT */}
         <div className="border-t border-slate-800/80 pt-6 flex flex-wrap items-center justify-between gap-4 text-[11px] text-slate-400">
           <div>
-            © 2026 USA Prime Reviews Hub. All rights reserved. Built for high-conversion US consumer commerce.
+            © 2026 Pickzoid.com. All rights reserved. Built for high-conversion US consumer commerce.
           </div>
           <div className="flex items-center gap-4">
             <span className="hover:text-slate-200 cursor-pointer">Privacy Policy</span>

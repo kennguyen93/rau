@@ -118,6 +118,11 @@ export const ComparisonMatrix: React.FC<ComparisonMatrixProps> = ({
                             alt={p.name}
                             className="w-28 h-28 object-contain mx-auto mix-blend-multiply cursor-pointer hover:scale-105 transition"
                             onClick={() => onOpenDetails(p)}
+                            onError={(e) => {
+                              const target = e.currentTarget;
+                              target.onerror = null;
+                              target.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><rect width="100%" height="100%" fill="%23f8fafc"/><text x="50%" y="50%" font-family="system-ui,sans-serif" font-size="14" font-weight="bold" fill="%2364748b" dominant-baseline="middle" text-anchor="middle">⭐ ${encodeURIComponent(p.brand)}</text></svg>`;
+                            }}
                           />
                           <div className="text-[10px] font-bold uppercase text-blue-600">{p.brand}</div>
                           <h4 
@@ -236,7 +241,7 @@ export const ComparisonMatrix: React.FC<ComparisonMatrixProps> = ({
                           <span>
                             {(p.category === 'grooming' || p.brand === 'The Beard Struggle')
                               ? (lang === 'en' ? 'Get Deal at TheBeardStruggle.com' : 'Truy Cập TheBeardStruggle.com')
-                              : (lang === 'en' ? 'Check Amazon Price' : 'Xem Giá Amazon')}
+                              : (lang === 'en' ? 'Get Direct Brand Deal' : 'Truy Cập Ưu Đãi Trực Tiếp')}
                           </span>
                           <ExternalLink className="w-3.5 h-3.5" />
                         </button>

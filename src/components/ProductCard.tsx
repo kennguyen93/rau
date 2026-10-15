@@ -76,7 +76,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             onError={(e) => {
               const target = e.currentTarget;
               target.onerror = null;
-              target.src = 'https://images.unsplash.com/photo-1621607512214-68297480165e?w=800&auto=format&fit=crop&q=80';
+              target.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400"><rect width="100%" height="100%" fill="%23f8fafc"/><rect x="20" y="20" width="560" height="360" rx="16" fill="%23f1f5f9" stroke="%23cbd5e1" stroke-width="2"/><text x="50%" y="45%" font-family="system-ui,sans-serif" font-size="24" font-weight="900" fill="%231e293b" dominant-baseline="middle" text-anchor="middle">⭐ ${encodeURIComponent(product.brand)}</text><text x="50%" y="58%" font-family="system-ui,sans-serif" font-size="15" font-weight="bold" fill="%2364748b" dominant-baseline="middle" text-anchor="middle">${encodeURIComponent(product.shortName)}</text></svg>`;
             }}
           />
 
@@ -195,31 +195,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             <span>
               {(product.category === 'grooming' || product.brand === 'The Beard Struggle')
                 ? (lang === 'en' ? 'Get Deal at TheBeardStruggle.com' : 'Truy Cập TheBeardStruggle.com')
-                : (lang === 'en' ? 'Claim Deal on Amazon US' : 'Mua Ngay Trên Amazon US')}
+                : (lang === 'en' ? 'Claim Exclusive Deal' : 'Nhận Ưu Đãi Trực Tiếp')}
             </span>
             <ExternalLink className="w-4 h-4 text-slate-950" />
           </button>
 
           {/* SECONDARY ROW */}
-          <div className="grid grid-cols-2 gap-2">
-            <button
-              onClick={() => onOpenOutbound(product, (product.category === 'grooming' || product.brand === 'The Beard Struggle') ? 'amazon' : 'official')}
-              className="py-2 px-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-bold text-[11px] transition flex items-center justify-center gap-1 cursor-pointer"
-            >
-              <Sparkles className="w-3 h-3 text-amber-400" />
-              <span>
-                {(product.category === 'grooming' || product.brand === 'The Beard Struggle')
-                  ? (lang === 'en' ? 'Check Amazon Price' : 'Xem Giá Amazon')
-                  : (lang === 'en' ? 'Official Site Deal' : 'Trang Chủ Hãng')}
-              </span>
-            </button>
-
+          <div className="flex gap-2">
             <button
               onClick={() => onOpenDetails(product)}
-              className="py-2 px-2.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-[11px] transition flex items-center justify-center gap-1 cursor-pointer"
+              className="w-full py-2 px-2.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs transition flex items-center justify-center gap-1.5 cursor-pointer"
             >
-              <FileText className="w-3 h-3 text-slate-600" />
-              <span>{lang === 'en' ? 'Full Lab Review' : 'Đọc Review'}</span>
+              <FileText className="w-3.5 h-3.5 text-slate-600" />
+              <span>{lang === 'en' ? 'Full Lab Review & Verification' : 'Xem Đánh Giá & Kiểm Nghiệm'}</span>
             </button>
           </div>
 

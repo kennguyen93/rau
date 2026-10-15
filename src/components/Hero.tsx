@@ -175,29 +175,34 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
 
               <div className="mt-3 flex items-center justify-between text-xs text-slate-400 border-b border-slate-700 pb-2">
-                <span className="font-semibold text-emerald-400">● 99.4% Bioavailability</span>
-                <span className="bg-slate-700/80 px-2 py-0.5 rounded text-[10px] text-slate-300">4,280+ Reviews</span>
+                <span className="font-semibold text-emerald-400">● 9.9/10 Lab Rating</span>
+                <span className="bg-slate-700/80 px-2 py-0.5 rounded text-[10px] text-slate-300">1,390+ Reviews</span>
               </div>
 
               <div className="mt-4 flex gap-4">
                 <img
-                  src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=300&auto=format&fit=crop&q=80"
-                  alt="NutriPeak Berberine"
-                  className="w-24 h-24 object-cover rounded-xl border border-slate-700 shrink-0"
+                  src="/src/assets/images/ultimate_carbon_kit.jpg"
+                  alt="The Beard Struggle Ultimate Carbon X Pro Kit"
+                  className="w-24 h-24 object-cover rounded-xl border border-slate-700 shrink-0 bg-slate-900"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    target.onerror = null;
+                    target.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><rect width="100%" height="100%" fill="%231e293b"/><text x="50%" y="50%" fill="%23f59e0b" font-family="sans-serif" font-weight="bold" font-size="14" dominant-baseline="middle" text-anchor="middle">THE BEARD STRUGGLE</text></svg>';
+                  }}
                 />
                 <div>
                   <h3 className="font-bold text-sm text-white leading-snug line-clamp-2">
-                    NutriPeak Liposomal Berberine 1200mg + Ceylon Cinnamon
+                    The Beard Struggle Ultimate Carbon X Pro Beard Kit
                   </h3>
                   <div className="flex items-baseline gap-2 mt-1.5">
-                    <span className="text-xl font-black text-amber-400">$28.95</span>
-                    <span className="text-xs text-slate-400 line-through">$49.99</span>
+                    <span className="text-xl font-black text-amber-400">$159.90</span>
+                    <span className="text-xs text-slate-400 line-through">$222.00</span>
                     <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/80 px-1.5 py-0.5 rounded border border-emerald-800">
-                      -42% OFF
+                      -28% OFF
                     </span>
                   </div>
                   <p className="text-[11px] text-slate-300 mt-1">
-                    {lang === 'en' ? 'Clinical metabolic & glucose support. Zero GI discomfort.' : 'Hỗ trợ đường huyết & trao đổi chất. Êm dịu dạ dày.'}
+                    {lang === 'en' ? 'Wild Beard, Instant Control. Full Arsenal with Heated Straightener.' : 'Bộ vũ khí chăm sóc râu đỉnh cao. Kèm lược nhiệt Carbon X Pro.'}
                   </p>
                 </div>
               </div>
@@ -205,13 +210,13 @@ export const Hero: React.FC<HeroProps> = ({
               <div className="mt-4 pt-3 border-t border-slate-700 flex items-center justify-between text-xs">
                 <span className="text-slate-400 flex items-center gap-1">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                  Code: <strong className="text-amber-300 font-mono">BERBER20</strong>
+                  Code: <strong className="text-amber-300 font-mono">CHANGE-ME-6638099</strong>
                 </span>
                 <button
-                  onClick={() => onSelectCategory('supplements')}
-                  className="text-blue-400 hover:text-blue-300 font-bold inline-flex items-center gap-1 cursor-pointer"
+                  onClick={() => onSelectCategory('grooming')}
+                  className="text-amber-400 hover:text-amber-300 font-bold inline-flex items-center gap-1 cursor-pointer"
                 >
-                  {lang === 'en' ? 'Read Lab Review' : 'Xem Đánh Giá'} &rarr;
+                  {lang === 'en' ? 'Get Deal Now' : 'Xem Ưu Đãi'} &rarr;
                 </button>
               </div>
             </div>
