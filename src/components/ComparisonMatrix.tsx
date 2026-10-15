@@ -234,17 +234,32 @@ export const ComparisonMatrix: React.FC<ComparisonMatrixProps> = ({
                     </td>
                     {compareProducts.map((p) => (
                       <td key={p.id} className="p-4 space-y-2">
-                        <button
-                          onClick={() => onOpenOutbound(p, (p.category === 'grooming' || p.brand === 'The Beard Struggle') ? 'official' : 'amazon')}
-                          className="w-full py-2 px-3 rounded-lg bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-black text-xs shadow-xs transition flex items-center justify-center gap-1.5 cursor-pointer"
-                        >
-                          <span>
-                            {(p.category === 'grooming' || p.brand === 'The Beard Struggle')
-                              ? (lang === 'en' ? 'Get Deal at TheBeardStruggle.com' : 'Truy Cập TheBeardStruggle.com')
-                              : (lang === 'en' ? 'Get Direct Brand Deal' : 'Truy Cập Ưu Đãi Trực Tiếp')}
-                          </span>
-                          <ExternalLink className="w-3.5 h-3.5" />
-                        </button>
+                        {(() => {
+                          const isTBS = p.category === 'grooming' || p.brand === 'The Beard Struggle';
+                          const targetUrl = (isTBS || !p.affiliateUrlOfficial || p.affiliateUrlOfficial.includes('croreview'))
+                            ? 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda'
+                            : p.affiliateUrlOfficial;
+                          return (
+                            <a
+                              href={targetUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={() => {
+                                if (p.couponCode) {
+                                  navigator.clipboard?.writeText(p.couponCode).catch(() => {});
+                                }
+                              }}
+                              className="w-full py-2 px-3 rounded-lg bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-black text-xs shadow-xs transition flex items-center justify-center gap-1.5 cursor-pointer no-underline"
+                            >
+                              <span>
+                                {isTBS
+                                  ? (lang === 'en' ? 'Get Deal at TheBeardStruggle.com' : 'Truy Cập TheBeardStruggle.com')
+                                  : (lang === 'en' ? 'Get Direct Brand Deal' : 'Truy Cập Ưu Đãi Trực Tiếp')}
+                              </span>
+                              <ExternalLink className="w-3.5 h-3.5" />
+                            </a>
+                          );
+                        })()}
                         <button
                           onClick={() => onOpenDetails(p)}
                           className="w-full py-1.5 text-center text-[11px] font-bold text-blue-600 hover:underline cursor-pointer"

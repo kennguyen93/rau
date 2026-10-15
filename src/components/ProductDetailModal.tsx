@@ -45,6 +45,10 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   };
 
   const savingsAmount = (product.originalPrice - product.salePrice).toFixed(2);
+  const isTBS = product.category === 'grooming' || product.brand === 'The Beard Struggle';
+  const targetUrl = (isTBS || !product.affiliateUrlOfficial || product.affiliateUrlOfficial.includes('croreview'))
+    ? 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda'
+    : product.affiliateUrlOfficial;
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-3 sm:p-5">
@@ -206,17 +210,24 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
               {/* PRIMARY HIGH-CONVERTING CTA BUTTONS */}
               <div className="space-y-2.5 pt-2">
-                <button
-                  onClick={() => onOpenOutbound(product, (product.category === 'grooming' || product.brand === 'The Beard Struggle') ? 'official' : 'amazon')}
-                  className="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-700 text-slate-950 font-black text-sm sm:text-base shadow-lg hover:shadow-xl transition transform active:scale-98 flex items-center justify-center gap-2 cursor-pointer animate-pulse-glow"
+                <a
+                  href={targetUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    if (product.couponCode) {
+                      navigator.clipboard?.writeText(product.couponCode).catch(() => {});
+                    }
+                  }}
+                  className="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-700 text-slate-950 font-black text-sm sm:text-base shadow-lg hover:shadow-xl transition transform active:scale-98 flex items-center justify-center gap-2 cursor-pointer animate-pulse-glow no-underline"
                 >
                   <span>
-                    {(product.category === 'grooming' || product.brand === 'The Beard Struggle')
+                    {isTBS
                       ? (lang === 'en' ? 'Claim Deal at TheBeardStruggle.com 🛒' : 'Truy Cập TheBeardStruggle.com 🛒')
                       : (lang === 'en' ? 'Claim Verified Deal 🛒' : 'Nhận Ưu Đãi Độc Quyền 🛒')}
                   </span>
                   <ExternalLink className="w-4 h-4 text-slate-950" />
-                </button>
+                </a>
               </div>
 
               {/* US SHIPPING & GUARANTEE */}
@@ -445,17 +456,24 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           </div>
 
           <div className="flex items-center gap-3">
-            <button
-              onClick={() => onOpenOutbound(product, (product.category === 'grooming' || product.brand === 'The Beard Struggle') ? 'official' : 'amazon')}
-              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-black text-sm shadow-md transition transform active:scale-95 flex items-center gap-1.5 cursor-pointer"
+            <a
+              href={targetUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                if (product.couponCode) {
+                  navigator.clipboard?.writeText(product.couponCode).catch(() => {});
+                }
+              }}
+              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-black text-sm shadow-md transition transform active:scale-95 flex items-center gap-1.5 cursor-pointer no-underline"
             >
               <span>
-                {(product.category === 'grooming' || product.brand === 'The Beard Struggle')
+                {isTBS
                   ? (lang === 'en' ? 'Claim Deal at TheBeardStruggle.com' : 'Truy Cập TheBeardStruggle.com')
                   : (lang === 'en' ? 'Claim Verified Deal' : 'Nhận Ưu Đãi Trực Tiếp')}
               </span>
               <ExternalLink className="w-4 h-4" />
-            </button>
+            </a>
           </div>
         </div>
 

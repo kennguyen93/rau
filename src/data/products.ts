@@ -31,7 +31,7 @@ export const PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=800&auto=format&fit=crop&q=80'
     ],
     affiliateUrlAmazon: 'https://amazon.com/dp/B0EXAMPLE2?tag=usareviewhub-20',
-    affiliateUrlOfficial: 'https://apexmindnootropics.com/exclusive-bundle?ref=croreview',
+    affiliateUrlOfficial: 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda',
     badgeText: 'BEST NOOTROPIC FOR PRODUCTIVITY',
     badgeType: 'lab',
     usShipping: 'Fast Free US Standard Shipping on Orders $35+',
@@ -114,7 +114,7 @@ export const PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&auto=format&fit=crop&q=80'
     ],
     affiliateUrlAmazon: 'https://amazon.com/dp/B0EXAMPLE5?tag=usareviewhub-20',
-    affiliateUrlOfficial: 'https://baristaforgeappliances.com/dual-thermoblock?ref=croreview',
+    affiliateUrlOfficial: 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda',
     badgeText: 'EDITOR CHOICE: BEST HOME ESPRESSO',
     badgeType: 'editor',
     usShipping: 'Free Insured Heavy-Courier Shipping across 48 States',
@@ -194,7 +194,7 @@ export const PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=800&auto=format&fit=crop&q=80'
     ],
     affiliateUrlAmazon: 'https://amazon.com/dp/B0EXAMPLE6?tag=usareviewhub-20',
-    affiliateUrlOfficial: 'https://cleanbotrobotics.com/omni-v9-deal?ref=croreview',
+    affiliateUrlOfficial: 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda',
     badgeText: 'BEST VACUUM DEAL: 40% OFF',
     badgeType: 'deal',
     usShipping: 'Free Curbside & 2-Day Delivery in Contiguous US',
@@ -276,7 +276,7 @@ export const PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1572536147248-ac59a8abfa4b?w=800&auto=format&fit=crop&q=80'
     ],
     affiliateUrlAmazon: 'https://amazon.com/dp/B0EXAMPLE7?tag=usareviewhub-20',
-    affiliateUrlOfficial: 'https://acoustisyncaudio.com/pro-earbuds-special?ref=croreview',
+    affiliateUrlOfficial: 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda',
     badgeText: '50% OFF FLASH DEAL - BEST SOUND',
     badgeType: 'deal',
     usShipping: 'Fast Free US Priority Shipping (1-3 Days)',
@@ -355,7 +355,7 @@ export const PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&auto=format&fit=crop&q=80'
     ],
     affiliateUrlAmazon: 'https://amazon.com/dp/B0EXAMPLE8?tag=usareviewhub-20',
-    affiliateUrlOfficial: 'https://hyperchargetech.com/140w-gan-bundle?ref=croreview',
+    affiliateUrlOfficial: 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda',
     badgeText: 'BEST TECH ACCESSORY 2026',
     badgeType: 'value',
     usShipping: 'Free 2-Day Prime Shipping in USA',
@@ -434,7 +434,7 @@ export const PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&auto=format&fit=crop&q=80'
     ],
     affiliateUrlAmazon: 'https://amazon.com/dp/B0EXAMPLE9?tag=usareviewhub-20',
-    affiliateUrlOfficial: 'https://viberinghealth.com/genesis-edition?ref=croreview',
+    affiliateUrlOfficial: 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda',
     badgeText: '#1 SUBSCRIPTION-FREE SMART RING',
     badgeType: 'lab',
     usShipping: 'Free Ring Sizing Kit + Express US Shipping',
@@ -516,7 +516,7 @@ export const PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=800&auto=format&fit=crop&q=80'
     ],
     affiliateUrlAmazon: 'https://amazon.com/dp/B0EXAMPLE10?tag=usareviewhub-20',
-    affiliateUrlOfficial: 'https://hydropureliving.com/shower-filter-us?ref=croreview',
+    affiliateUrlOfficial: 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda',
     badgeText: 'BEST FOR DRY SKIN & HAIR LOSS',
     badgeType: 'value',
     usShipping: 'Fast Free 2-Day Shipping in the USA',
@@ -595,7 +595,7 @@ export const PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1540518614846-7ede433c4ef0?w=800&auto=format&fit=crop&q=80'
     ],
     affiliateUrlAmazon: 'https://amazon.com/dp/B0EXAMPLE11?tag=usareviewhub-20',
-    affiliateUrlOfficial: 'https://ergocloudsleep.com/contour-pillow?ref=croreview',
+    affiliateUrlOfficial: 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda',
     badgeText: '#1 CHIROPRACTOR RECOMMENDED',
     badgeType: 'editor',
     usShipping: 'Free 2-Day Shipping Across All 50 US States',

@@ -31,12 +31,12 @@ export const OutboundModal: React.FC<OutboundModalProps> = ({
   const [countdown, setCountdown] = useState(3);
 
   const isTBS = product.brand === 'The Beard Struggle' || product.category === 'grooming';
-  const destinationUrl = isTBS
-    ? (target === 'amazon' ? product.affiliateUrlAmazon : (product.affiliateUrlOfficial || 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda'))
-    : (product.affiliateUrlAmazon || 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda');
+  const destinationUrl = (isTBS || !product.affiliateUrlOfficial || product.affiliateUrlOfficial.includes('croreview'))
+    ? 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda'
+    : product.affiliateUrlOfficial;
   const merchantName = isTBS
-    ? (target === 'amazon' ? 'Amazon USA' : 'The Beard Struggle Official')
-    : 'Amazon USA';
+    ? 'The Beard Struggle Official'
+    : `${product.brand} Official Store`;
 
   useEffect(() => {
     // Automatically copy promo code if present
@@ -160,13 +160,16 @@ export const OutboundModal: React.FC<OutboundModalProps> = ({
 
         {/* PROGRESS BAR & MANUAL CTA */}
         <div className="space-y-3">
-          <button
-            onClick={handleManualRedirect}
-            className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-700 text-slate-950 font-black text-sm sm:text-base shadow-lg transition transform active:scale-98 flex items-center justify-center gap-2 cursor-pointer animate-pulse-glow"
+          <a
+            href={destinationUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={onClose}
+            className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-700 text-slate-950 font-black text-sm sm:text-base shadow-lg transition transform active:scale-98 flex items-center justify-center gap-2 cursor-pointer animate-pulse-glow no-underline"
           >
             <span>{lang === 'en' ? `Proceed to ${merchantName} Now` : `Mở ${merchantName} Ngay Bây Giờ`}</span>
             <ExternalLink className="w-4 h-4" />
-          </button>
+          </a>
 
           <p className="text-[11px] text-slate-400">
             {lang === 'en' 

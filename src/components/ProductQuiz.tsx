@@ -291,17 +291,32 @@ export const ProductQuiz: React.FC<ProductQuizProps> = ({
             )}
 
             <div className="space-y-2">
-              <button
-                onClick={() => onOpenOutbound(matchedProduct, (matchedProduct.category === 'grooming' || matchedProduct.brand === 'The Beard Struggle') ? 'official' : 'amazon')}
-                className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-700 text-slate-950 font-black text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <span>
-                  {(matchedProduct.category === 'grooming' || matchedProduct.brand === 'The Beard Struggle')
-                    ? (lang === 'en' ? 'Claim Deal at TheBeardStruggle.com' : 'Truy Cập TheBeardStruggle.com Nhận Ưu Đãi')
-                    : (lang === 'en' ? 'Claim Exclusive Deal With This Voucher' : 'Nhận Ưu Đãi Độc Quyền Với Mã Này')}
-                </span>
-                <ExternalLink className="w-4 h-4" />
-              </button>
+              {(() => {
+                const isTBS = matchedProduct.category === 'grooming' || matchedProduct.brand === 'The Beard Struggle';
+                const targetUrl = (isTBS || !matchedProduct.affiliateUrlOfficial || matchedProduct.affiliateUrlOfficial.includes('croreview'))
+                  ? 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda'
+                  : matchedProduct.affiliateUrlOfficial;
+                return (
+                  <a
+                    href={targetUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => {
+                      if (matchedProduct.couponCode) {
+                        navigator.clipboard?.writeText(matchedProduct.couponCode).catch(() => {});
+                      }
+                    }}
+                    className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-700 text-slate-950 font-black text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer no-underline"
+                  >
+                    <span>
+                      {isTBS
+                        ? (lang === 'en' ? 'Claim Deal at TheBeardStruggle.com' : 'Truy Cập TheBeardStruggle.com Nhận Ưu Đãi')
+                        : (lang === 'en' ? 'Claim Exclusive Deal With This Voucher' : 'Nhận Ưu Đãi Độc Quyền Với Mã Này')}
+                    </span>
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                );
+              })()}
 
               <div className="grid grid-cols-2 gap-2">
                 <button

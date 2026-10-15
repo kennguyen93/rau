@@ -50,6 +50,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     }
   };
 
+  const isTBS = product.category === 'grooming' || product.brand === 'The Beard Struggle';
+  const targetUrl = (isTBS || !product.affiliateUrlOfficial || product.affiliateUrlOfficial.includes('croreview'))
+    ? 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda'
+    : product.affiliateUrlOfficial;
+
   return (
     <div className="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group relative">
       
@@ -188,17 +193,24 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <div className="mt-5 pt-3 border-t border-slate-100 space-y-2">
           
           {/* PRIMARY HIGH-CONVERTING BUY BUTTON */}
-          <button
-            onClick={() => onOpenOutbound(product, (product.category === 'grooming' || product.brand === 'The Beard Struggle') ? 'official' : 'amazon')}
-            className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-700 text-slate-950 font-black text-xs sm:text-sm shadow-md hover:shadow-lg transition transform active:scale-98 flex items-center justify-center gap-2 cursor-pointer animate-pulse-glow"
+          <a
+            href={targetUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => {
+              if (product.couponCode) {
+                navigator.clipboard?.writeText(product.couponCode).catch(() => {});
+              }
+            }}
+            className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-700 text-slate-950 font-black text-xs sm:text-sm shadow-md hover:shadow-lg transition transform active:scale-98 flex items-center justify-center gap-2 cursor-pointer animate-pulse-glow no-underline"
           >
             <span>
-              {(product.category === 'grooming' || product.brand === 'The Beard Struggle')
+              {isTBS
                 ? (lang === 'en' ? 'Get Deal at TheBeardStruggle.com' : 'Truy Cập TheBeardStruggle.com')
                 : (lang === 'en' ? 'Claim Exclusive Deal' : 'Nhận Ưu Đãi Trực Tiếp')}
             </span>
             <ExternalLink className="w-4 h-4 text-slate-950" />
-          </button>
+          </a>
 
           {/* SECONDARY ROW */}
           <div className="flex gap-2">
