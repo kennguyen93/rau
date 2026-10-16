@@ -236,9 +236,18 @@ export const ComparisonMatrix: React.FC<ComparisonMatrixProps> = ({
                       <td key={p.id} className="p-4 space-y-2">
                         {(() => {
                           const isTBS = p.category === 'grooming' || p.brand === 'The Beard Struggle';
-                          const targetUrl = (isTBS || !p.affiliateUrlOfficial || p.affiliateUrlOfficial.includes('croreview'))
-                            ? 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda'
-                            : p.affiliateUrlOfficial;
+                          const hasAffiliateLink = isTBS && Boolean(p.affiliateUrlOfficial);
+                          const targetUrl = hasAffiliateLink ? p.affiliateUrlOfficial : '';
+                          if (!hasAffiliateLink) {
+                            return (
+                              <button
+                                onClick={() => onOpenDetails(p)}
+                                className="w-full py-2 px-3 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs transition flex items-center justify-center gap-1.5 cursor-pointer"
+                              >
+                                <span>{lang === 'en' ? 'Lab Benchmark' : 'Bản Đánh Giá Lab'}</span>
+                              </button>
+                            );
+                          }
                           return (
                             <a
                               href={targetUrl}
@@ -252,9 +261,7 @@ export const ComparisonMatrix: React.FC<ComparisonMatrixProps> = ({
                               className="w-full py-2 px-3 rounded-lg bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-black text-xs shadow-xs transition flex items-center justify-center gap-1.5 cursor-pointer no-underline"
                             >
                               <span>
-                                {isTBS
-                                  ? (lang === 'en' ? 'Get Deal at TheBeardStruggle.com' : 'Truy Cập TheBeardStruggle.com')
-                                  : (lang === 'en' ? 'Get Direct Brand Deal' : 'Truy Cập Ưu Đãi Trực Tiếp')}
+                                {lang === 'en' ? 'Get Deal at TheBeardStruggle.com' : 'Truy Cập TheBeardStruggle.com'}
                               </span>
                               <ExternalLink className="w-3.5 h-3.5" />
                             </a>

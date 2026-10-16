@@ -293,9 +293,21 @@ export const ProductQuiz: React.FC<ProductQuizProps> = ({
             <div className="space-y-2">
               {(() => {
                 const isTBS = matchedProduct.category === 'grooming' || matchedProduct.brand === 'The Beard Struggle';
-                const targetUrl = (isTBS || !matchedProduct.affiliateUrlOfficial || matchedProduct.affiliateUrlOfficial.includes('croreview'))
-                  ? 'https://www.thebeardstruggle.com/discount/CHANGE-ME-6638099?ref=ndc2zda'
-                  : matchedProduct.affiliateUrlOfficial;
+                const hasAffiliateLink = isTBS && Boolean(matchedProduct.affiliateUrlOfficial);
+                const targetUrl = hasAffiliateLink ? matchedProduct.affiliateUrlOfficial : '';
+                if (!hasAffiliateLink) {
+                  return (
+                    <button
+                      onClick={() => {
+                        onClose();
+                        onOpenDetails(matchedProduct);
+                      }}
+                      className="w-full py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm shadow-sm transition flex items-center justify-center gap-2 cursor-pointer"
+                    >
+                      <span>{lang === 'en' ? 'View Complete Lab Teardown' : 'Xem Báo Cáo Kiểm Nghiệm Chi Tiết'}</span>
+                    </button>
+                  );
+                }
                 return (
                   <a
                     href={targetUrl}
@@ -309,9 +321,7 @@ export const ProductQuiz: React.FC<ProductQuizProps> = ({
                     className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-700 text-slate-950 font-black text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer no-underline"
                   >
                     <span>
-                      {isTBS
-                        ? (lang === 'en' ? 'Claim Deal at TheBeardStruggle.com' : 'Truy Cập TheBeardStruggle.com Nhận Ưu Đãi')
-                        : (lang === 'en' ? 'Claim Exclusive Deal With This Voucher' : 'Nhận Ưu Đãi Độc Quyền Với Mã Này')}
+                      {lang === 'en' ? 'Claim Deal at TheBeardStruggle.com' : 'Truy Cập TheBeardStruggle.com Nhận Ưu Đãi'}
                     </span>
                     <ExternalLink className="w-4 h-4" />
                   </a>
