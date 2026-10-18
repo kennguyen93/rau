@@ -86,6 +86,16 @@ export const Header: React.FC<HeaderProps> = ({
               {lang === 'en' ? 'CRO / Affiliate Setup Guide' : 'Cẩm Nang CRO & Affiliate'}
             </button>
 
+            <a
+              href="./cpanel_public_html.zip"
+              download="cpanel_public_html.zip"
+              className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-600/60 text-emerald-300 hover:text-emerald-200 hover:bg-emerald-900 transition font-medium no-underline"
+              title="Tải gói file nén cPanel public_html để tải lên hosting"
+            >
+              <span>📦</span>
+              <span>{lang === 'en' ? 'cPanel Zip' : 'Tải File cPanel (.zip)'}</span>
+            </a>
+
             <button
               onClick={onToggleLang}
               className="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold border border-slate-700 transition"
