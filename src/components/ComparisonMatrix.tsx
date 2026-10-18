@@ -236,9 +236,10 @@ export const ComparisonMatrix: React.FC<ComparisonMatrixProps> = ({
                       <td key={p.id} className="p-4 space-y-2">
                         {(() => {
                           const isTBS = p.category === 'grooming' || p.brand === 'The Beard Struggle';
-                          const hasAffiliateLink = isTBS && Boolean(p.affiliateUrlOfficial);
+                          const hasAffiliateLink = !p.noAffiliateLink && isTBS && Boolean(p.affiliateUrlOfficial);
                           const targetUrl = hasAffiliateLink ? p.affiliateUrlOfficial : '';
-                          if (!hasAffiliateLink) {
+                          const linkUrl = hasAffiliateLink ? targetUrl : (!p.noAffiliateLink && p.affiliateUrlAmazon ? p.affiliateUrlAmazon : '');
+                          if (!linkUrl) {
                             return (
                               <button
                                 onClick={() => onOpenDetails(p)}
@@ -250,7 +251,7 @@ export const ComparisonMatrix: React.FC<ComparisonMatrixProps> = ({
                           }
                           return (
                             <a
-                              href={targetUrl}
+                              href={linkUrl}
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={() => {
@@ -261,7 +262,9 @@ export const ComparisonMatrix: React.FC<ComparisonMatrixProps> = ({
                               className="w-full py-2 px-3 rounded-lg bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-black text-xs shadow-xs transition flex items-center justify-center gap-1.5 cursor-pointer no-underline"
                             >
                               <span>
-                                {lang === 'en' ? 'Get Deal at TheBeardStruggle.com' : 'Truy Cập TheBeardStruggle.com'}
+                                {hasAffiliateLink
+                                  ? (lang === 'en' ? 'Get Deal at TheBeardStruggle.com' : 'Truy Cập TheBeardStruggle.com')
+                                  : (lang === 'en' ? 'View on Amazon.com' : 'Truy Cập Link Amazon')}
                               </span>
                               <ExternalLink className="w-3.5 h-3.5" />
                             </a>

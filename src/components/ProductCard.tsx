@@ -51,7 +51,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   };
 
   const isTBS = product.category === 'grooming' || product.brand === 'The Beard Struggle';
-  const hasAffiliateLink = isTBS && Boolean(product.affiliateUrlOfficial);
+  const hasAffiliateLink = !product.noAffiliateLink && isTBS && Boolean(product.affiliateUrlOfficial);
+  const hasAmazonLink = !product.noAffiliateLink && Boolean(product.affiliateUrlAmazon);
   const targetUrl = hasAffiliateLink ? product.affiliateUrlOfficial : '';
 
   return (
@@ -191,7 +192,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         {/* BOTTOM ACTION BUTTONS */}
         <div className="mt-5 pt-3 border-t border-slate-100 space-y-2">
           
-          {/* PRIMARY BUTTON: Anchor link ONLY if product has affiliate link, otherwise button with NO link */}
+          {/* PRIMARY BUTTON: Anchor link if product has official affiliate link or Amazon link */}
           {hasAffiliateLink ? (
             <a
               href={targetUrl}
@@ -209,6 +210,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               </span>
               <ExternalLink className="w-4 h-4 text-slate-950" />
             </a>
+          ) : hasAmazonLink ? (
+            <a
+              href={product.affiliateUrlAmazon}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-700 text-slate-950 font-black text-xs sm:text-sm shadow-md hover:shadow-lg transition transform active:scale-98 flex items-center justify-center gap-2 cursor-pointer no-underline"
+            >
+              <span>
+                {lang === 'en' ? 'Check Deal on Amazon' : 'Kiểm Tra Deal Trên Amazon'}
+              </span>
+              <ExternalLink className="w-4 h-4 text-slate-950" />
+            </a>
           ) : (
             <button
               onClick={() => onOpenDetails(product)}
@@ -220,7 +233,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           )}
 
           {/* SECONDARY ROW: only show when primary is an external link */}
-          {hasAffiliateLink && (
+          {(hasAffiliateLink || hasAmazonLink) && (
             <div className="flex gap-2">
               <button
                 onClick={() => onOpenDetails(product)}

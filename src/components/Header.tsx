@@ -43,9 +43,8 @@ export const Header: React.FC<HeaderProps> = ({
   const categories: { id: NicheCategory; labelEn: string; labelVi: string; icon: string }[] = [
     { id: 'all', labelEn: 'All Picks', labelVi: 'Tất Cả Sản Phẩm', icon: '⭐' },
     { id: 'supplements', labelEn: 'Dietary Supplements', labelVi: 'Thực Phẩm Chức Năng', icon: '💊' },
-    { id: 'appliances', labelEn: 'Home & Kitchen', labelVi: 'Đồ Gia Dụng', icon: '🍳' },
     { id: 'tech', labelEn: 'Tech & Gadgets', labelVi: 'Đồ Công Nghệ', icon: '⚡' },
-    { id: 'physical', labelEn: 'Physical Goods', labelVi: 'Sản Phẩm Đời Sống', icon: '🎒' },
+    { id: 'physical', labelEn: 'Cervical Pillows', labelVi: 'Gối Định Hình Cổ', icon: '🛏️' },
     { id: 'grooming', labelEn: "Men's Luxury Grooming", labelVi: 'Chăm Sóc Râu & Grooming', icon: '🪒' },
   ];
 

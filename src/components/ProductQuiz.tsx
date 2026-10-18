@@ -104,20 +104,6 @@ export const ProductQuiz: React.FC<ProductQuizProps> = ({
                 </div>
               </button>
 
-              <button
-                onClick={() => { setSelectedGoal('appliances'); setStep(2); }}
-                className="p-4 rounded-xl border border-slate-200 hover:border-blue-500 hover:bg-blue-50/60 text-left transition flex items-start gap-3 cursor-pointer group"
-              >
-                <div className="p-2 rounded-lg bg-orange-100 text-orange-700 font-bold group-hover:scale-110 transition">🍳</div>
-                <div>
-                  <div className="font-bold text-sm text-slate-900">
-                    {lang === 'en' ? 'Home & Kitchen' : 'Đồ Gia Dụng'}
-                  </div>
-                  <div className="text-[11px] text-slate-500 mt-0.5">
-                    {lang === 'en' ? 'Air purifiers, robot vacuums, espresso' : 'Máy lọc khí, robot hút bụi, máy pha cafe'}
-                  </div>
-                </div>
-              </button>
 
               <button
                 onClick={() => { setSelectedGoal('tech'); setStep(2); }}
@@ -293,9 +279,10 @@ export const ProductQuiz: React.FC<ProductQuizProps> = ({
             <div className="space-y-2">
               {(() => {
                 const isTBS = matchedProduct.category === 'grooming' || matchedProduct.brand === 'The Beard Struggle';
-                const hasAffiliateLink = isTBS && Boolean(matchedProduct.affiliateUrlOfficial);
+                const hasAffiliateLink = !matchedProduct.noAffiliateLink && isTBS && Boolean(matchedProduct.affiliateUrlOfficial);
                 const targetUrl = hasAffiliateLink ? matchedProduct.affiliateUrlOfficial : '';
-                if (!hasAffiliateLink) {
+                const linkUrl = hasAffiliateLink ? targetUrl : (!matchedProduct.noAffiliateLink && matchedProduct.affiliateUrlAmazon ? matchedProduct.affiliateUrlAmazon : '');
+                if (!linkUrl) {
                   return (
                     <button
                       onClick={() => {
@@ -310,7 +297,7 @@ export const ProductQuiz: React.FC<ProductQuizProps> = ({
                 }
                 return (
                   <a
-                    href={targetUrl}
+                    href={linkUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => {
@@ -321,7 +308,9 @@ export const ProductQuiz: React.FC<ProductQuizProps> = ({
                     className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-700 text-slate-950 font-black text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer no-underline"
                   >
                     <span>
-                      {lang === 'en' ? 'Claim Deal at TheBeardStruggle.com' : 'Truy Cập TheBeardStruggle.com Nhận Ưu Đãi'}
+                      {hasAffiliateLink
+                        ? (lang === 'en' ? 'Claim Deal at TheBeardStruggle.com' : 'Truy Cập TheBeardStruggle.com Nhận Ưu Đãi')
+                        : (lang === 'en' ? 'Check Deal on Amazon.com' : 'Truy Cập Link Amazon')}
                     </span>
                     <ExternalLink className="w-4 h-4" />
                   </a>

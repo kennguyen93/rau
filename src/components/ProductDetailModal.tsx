@@ -46,7 +46,8 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
   const savingsAmount = (product.originalPrice - product.salePrice).toFixed(2);
   const isTBS = product.category === 'grooming' || product.brand === 'The Beard Struggle';
-  const hasAffiliateLink = isTBS && Boolean(product.affiliateUrlOfficial);
+  const hasAffiliateLink = !product.noAffiliateLink && isTBS && Boolean(product.affiliateUrlOfficial);
+  const hasAmazonLink = !product.noAffiliateLink && Boolean(product.affiliateUrlAmazon);
   const targetUrl = hasAffiliateLink ? product.affiliateUrlOfficial : '';
 
   return (
@@ -223,6 +224,18 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   >
                     <span>
                       {lang === 'en' ? 'Claim Deal at TheBeardStruggle.com 🛒' : 'Truy Cập TheBeardStruggle.com 🛒'}
+                    </span>
+                    <ExternalLink className="w-4 h-4 text-slate-950" />
+                  </a>
+                ) : hasAmazonLink ? (
+                  <a
+                    href={product.affiliateUrlAmazon}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-3 px-6 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-700 text-slate-950 font-black text-sm sm:text-base shadow-lg hover:shadow-xl transition transform active:scale-98 flex items-center justify-center gap-2 cursor-pointer no-underline"
+                  >
+                    <span>
+                      {lang === 'en' ? 'View & Buy on Amazon.com 🛒' : 'Truy Cập Mua Trên Amazon.com 🛒'}
                     </span>
                     <ExternalLink className="w-4 h-4 text-slate-950" />
                   </a>
@@ -473,6 +486,18 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               >
                 <span>
                   {lang === 'en' ? 'Claim Deal at TheBeardStruggle.com' : 'Truy Cập TheBeardStruggle.com'}
+                </span>
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            ) : hasAmazonLink ? (
+              <a
+                href={product.affiliateUrlAmazon}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-black text-sm shadow-md transition transform active:scale-95 flex items-center gap-1.5 cursor-pointer no-underline"
+              >
+                <span>
+                  {lang === 'en' ? 'Check Deal on Amazon' : 'Kiểm Tra Deal Trên Amazon'}
                 </span>
                 <ExternalLink className="w-4 h-4" />
               </a>

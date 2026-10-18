@@ -51,11 +51,6 @@ export const Footer: React.FC<FooterProps> = ({
                 </button>
               </li>
               <li>
-                <button onClick={() => onSelectCategory('appliances')} className="hover:text-white transition cursor-pointer">
-                  🍳 {lang === 'en' ? 'Home & Kitchen Appliances' : 'Đồ Gia Dụng Thông Minh'}
-                </button>
-              </li>
-              <li>
                 <button onClick={() => onSelectCategory('tech')} className="hover:text-white transition cursor-pointer">
                   ⚡ {lang === 'en' ? 'Consumer Tech & Audio Gadgets' : 'Công Nghệ & Tai Nghe ANC'}
                 </button>

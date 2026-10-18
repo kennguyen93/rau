@@ -162,7 +162,6 @@ export default function App() {
                 <h2 className="text-2xl sm:text-3xl font-black font-heading text-slate-900">
                   {activeCategory === 'all' && (lang === 'en' ? 'Top Rated US Picks (Tested in 2026)' : 'Top Sản Phẩm Nổi Bật Bán Chạy Tại Mỹ (2026)')}
                   {activeCategory === 'supplements' && (lang === 'en' ? 'Dietary Supplements & Biohacking' : 'Thực Phẩm Chức Năng Chuẩn NSF & GMP')}
-                  {activeCategory === 'appliances' && (lang === 'en' ? 'Smart Home & Kitchen Appliances' : 'Đồ Gia Dụng Thông Minh Cao Cấp')}
                   {activeCategory === 'tech' && (lang === 'en' ? 'Consumer Tech & Smart Gadgets' : 'Công Nghệ, Âm Thanh & Phụ Kiện Sạc GaN')}
                   {activeCategory === 'physical' && (lang === 'en' ? 'Physical Goods & Everyday Living' : 'Sản Phẩm Vật Lý & Chăm Sóc Sức Khỏe Đời Sống')}
                   {activeCategory === 'grooming' && (lang === 'en' ? 'The Beard Struggle & Luxury Men’s Grooming' : 'The Beard Struggle & Chăm Sóc Râu Nam Giới Đẳng Cấp')}
@@ -224,11 +223,6 @@ export default function App() {
                     ? 'All listed supplements are manufactured in cGMP-compliant, FDA-registered US facilities with independent 3rd-party assays for potency, bioavailability, and heavy metal limits.'
                     : 'Mọi thực phẩm chức năng trong danh sách đều sản xuất tại nhà máy chuẩn cGMP tại Mỹ, có chứng nhận độc lập về độ hấp thụ và sàng lọc kim loại nặng.'
                 )}
-                {activeCategory === 'appliances' && (
-                  lang === 'en'
-                    ? 'All appliances undergo continuous 72-hour thermal stress tests, decibel noise floor measurements, and energy efficiency verification (Energy Star / UL listed).'
-                    : 'Đồ gia dụng đều trải qua kiểm tra độ ồn thực tế decibel, hiệu suất tiết kiệm điện Energy Star và độ bền vận hành liên tục.'
-                )}
                 {activeCategory === 'tech' && (
                   lang === 'en'
                     ? 'Tech gadgets are benchmarked on acoustic frequency response, real-world battery discharge cycles, and GaN safety thermals.'
@@ -236,8 +230,8 @@ export default function App() {
                 )}
                 {activeCategory === 'physical' && (
                   lang === 'en'
-                    ? 'Physical goods are validated by chiropractic panels or filtration lab standards (CertiPUR-US foam, NSF-177 water safety).'
-                    : 'Các sản phẩm vật lý được bác sĩ nắn chỉnh cột sống kiểm chứng tư thế và đo lường khả năng lọc clo theo chuẩn NSF-177.'
+                    ? 'All ergonomic cervical pillows are tested for cervical spinal curve alignment, non-toxic CertiPUR-US slow-rebound memory foam, and breathable cooling covers for chronic neck pain relief.'
+                    : 'Các mẫu gối định hình cổ cột sống công thái học được bác sĩ chuyên khoa kiểm định độ cong giải phẫu đốt sống cổ, mút hoạt tính CertiPUR-US và vải làm mát thông thoáng giảm đau mỏi vai gáy.'
                 )}
                 {activeCategory === 'grooming' && (
                   lang === 'en'

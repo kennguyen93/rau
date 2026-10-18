@@ -46,6 +46,7 @@ export interface Product {
   galleryImages: string[];
   affiliateUrlAmazon: string;
   affiliateUrlOfficial: string;
+  noAffiliateLink?: boolean;
   badgeText: string;
   badgeType: 'editor' | 'value' | 'deal' | 'lab';
   usShipping: string;
