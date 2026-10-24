@@ -11,6 +11,7 @@ import {
   Search
 } from 'lucide-react';
 import { NicheCategory } from '../types';
+import ultimateCarbonKitImg from '../assets/images/ultimate_carbon_kit.jpg';
 
 interface HeroProps {
   onSelectCategory: (cat: NicheCategory) => void;
@@ -181,7 +182,7 @@ export const Hero: React.FC<HeroProps> = ({
 
               <div className="mt-4 flex gap-4">
                 <img
-                  src="/src/assets/images/ultimate_carbon_kit.jpg"
+                  src={ultimateCarbonKitImg}
                   alt="The Beard Struggle Ultimate Carbon X Pro Kit"
                   className="w-24 h-24 object-cover rounded-xl border border-slate-700 shrink-0 bg-slate-900"
                   onError={(e) => {
