@@ -120,9 +120,6 @@ export const Header: React.FC<HeaderProps> = ({
               <div>
                 <div className="font-heading font-black text-xl tracking-tight text-slate-900 flex items-center gap-1.5 leading-none">
                   PICKZOID<span className="text-blue-600">.COM</span>
-                  <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300">
-                    USA 2026
-                  </span>
                 </div>
                 <p className="text-[11px] text-slate-500 font-medium tracking-tight mt-0.5">
                   {lang === 'en' ? 'Tested Products • Verified Lowest Prices' : 'Đánh Giá Chuyên Sâu • Săn Deal Mỹ Uy Tín'}
