@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { 
   Sparkles, 
   Scale, 
@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { PRODUCTS } from './data/products';
 import { Product, NicheCategory } from './types';
+import { trackPageView } from './utils/analytics';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { ProductCard } from './components/ProductCard';
@@ -39,6 +40,45 @@ export default function App() {
   const [compareList, setCompareList] = useState<Product[]>([]);
   const [isQuizOpen, setIsQuizOpen] = useState<boolean>(false);
   const [isAffiliateGuideOpen, setIsAffiliateGuideOpen] = useState<boolean>(false);
+
+  const isFirstCategoryRender = useRef(true);
+  const isFirstProductRender = useRef(true);
+
+  // Track browser history / hash navigation in SPA without page reload
+  useEffect(() => {
+    const handleRouteChange = () => {
+      const currentPath = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+      trackPageView(currentPath, document.title);
+    };
+
+    window.addEventListener('popstate', handleRouteChange);
+    window.addEventListener('hashchange', handleRouteChange);
+    return () => {
+      window.removeEventListener('popstate', handleRouteChange);
+      window.removeEventListener('hashchange', handleRouteChange);
+    };
+  }, []);
+
+  // Track SPA category view switches (skip initial mount to avoid duplicating gtag config page_view)
+  useEffect(() => {
+    if (isFirstCategoryRender.current) {
+      isFirstCategoryRender.current = false;
+      return;
+    }
+    const categoryPath = activeCategory === 'all' ? '/' : `/category/${activeCategory}`;
+    trackPageView(categoryPath, `${document.title} - ${activeCategory}`);
+  }, [activeCategory]);
+
+  // Track SPA product detail modal views
+  useEffect(() => {
+    if (isFirstProductRender.current) {
+      isFirstProductRender.current = false;
+      return;
+    }
+    if (selectedDetailProduct) {
+      trackPageView(`/product/${selectedDetailProduct.id}`, `${selectedDetailProduct.shortName} | Pickzoid.com`);
+    }
+  }, [selectedDetailProduct]);
 
   // Toggle Language
   const toggleLang = () => {
