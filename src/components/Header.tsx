@@ -12,6 +12,7 @@ import {
   CheckCircle2
 } from 'lucide-react';
 import { NicheCategory } from '../types';
+import { CATEGORY_SEO_MAP, HEADER_NAV_CATEGORIES, getCategoryPath } from '../utils/seo';
 
 interface HeaderProps {
   activeCategory: NicheCategory;
@@ -40,13 +41,19 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const categories: { id: NicheCategory; labelEn: string; labelVi: string; icon: string }[] = [
-    { id: 'all', labelEn: 'All Picks', labelVi: 'Tất Cả Sản Phẩm', icon: '⭐' },
-    { id: 'supplements', labelEn: 'Dietary Supplements', labelVi: 'Thực Phẩm Chức Năng', icon: '💊' },
-    { id: 'tech', labelEn: 'Tech & Gadgets', labelVi: 'Đồ Công Nghệ', icon: '⚡' },
-    { id: 'physical', labelEn: 'Cervical Pillows', labelVi: 'Gối Định Hình Cổ', icon: '🛏️' },
-    { id: 'grooming', labelEn: "Men's Luxury Grooming", labelVi: 'Chăm Sóc Râu & Grooming', icon: '🪒' },
-  ];
+  const categoryIcons: Record<NicheCategory, string> = {
+    all: '⭐',
+    supplements: '💊',
+    tech: '⚡',
+    physical: '🛏️',
+    grooming: '🪒',
+    appliances: '🏠',
+  };
+
+  const categories = HEADER_NAV_CATEGORIES.map((id) => ({
+    ...CATEGORY_SEO_MAP[id],
+    icon: categoryIcons[id],
+  }));
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs">
@@ -87,7 +94,7 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
 
             <a
-              href="./cpanel_public_html.zip"
+              href="/cpanel_public_html.zip"
               download="cpanel_public_html.zip"
               className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-600/60 text-emerald-300 hover:text-emerald-200 hover:bg-emerald-900 transition font-medium no-underline"
               title="Tải gói file nén cPanel public_html để tải lên hosting"
@@ -113,13 +120,20 @@ export const Header: React.FC<HeaderProps> = ({
           
           {/* LOGO */}
           <div className="flex items-center gap-3">
-            <a href="#" className="flex items-center gap-2 group">
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                onSelectCategory('all');
+              }}
+              className="flex items-center gap-2 group"
+            >
               <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-indigo-600 to-amber-500 flex items-center justify-center text-white font-black text-lg shadow-md group-hover:scale-105 transition-transform">
-                PZ
+                TV
               </div>
               <div>
                 <div className="font-heading font-black text-xl tracking-tight text-slate-900 flex items-center gap-1.5 leading-none">
-                  PICKZOID<span className="text-blue-600">.COM</span>
+                  TOPVORY<span className="text-blue-600">.COM</span>
                 </div>
                 <p className="text-[11px] text-slate-500 font-medium tracking-tight mt-0.5">
                   {lang === 'en' ? 'Tested Products • Verified Lowest Prices' : 'Đánh Giá Chuyên Sâu • Săn Deal Mỹ Uy Tín'}
@@ -196,22 +210,35 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* 3. CATEGORY SCROLL NAV */}
       <div className="border-t border-slate-100 bg-slate-50/80 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto flex items-center gap-1.5 py-2 overflow-x-auto no-scrollbar">
+        <div
+          role="navigation"
+          aria-label={lang === 'en' ? 'Product categories' : 'Danh mục sản phẩm'}
+          className="max-w-7xl mx-auto flex items-center gap-1.5 py-2 overflow-x-auto no-scrollbar"
+        >
           {categories.map((cat) => {
             const isActive = activeCategory === cat.id;
+            const categoryPath = getCategoryPath(cat.id);
+            const label = lang === 'en' ? cat.labelEn : cat.labelVi;
+            const seoDescription = lang === 'en' ? cat.descriptionEn : cat.descriptionVi;
             return (
-              <button
+              <a
                 key={cat.id}
-                onClick={() => onSelectCategory(cat.id)}
-                className={`whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer ${
+                href={categoryPath}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onSelectCategory(cat.id);
+                }}
+                aria-current={isActive ? 'page' : undefined}
+                title={seoDescription}
+                className={`whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer no-underline ${
                   isActive
                     ? 'bg-blue-600 text-white shadow-xs'
                     : 'bg-white text-slate-600 hover:bg-slate-200/70 border border-slate-200/80'
                 }`}
               >
-                <span>{cat.icon}</span>
-                <span>{lang === 'en' ? cat.labelEn : cat.labelVi}</span>
-              </button>
+                <span aria-hidden="true">{cat.icon}</span>
+                <span>{label}</span>
+              </a>
             );
           })}
         </div>

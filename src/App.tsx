@@ -14,6 +14,7 @@ import {
 import { PRODUCTS } from './data/products';
 import { Product, NicheCategory } from './types';
 import { trackPageView } from './utils/analytics';
+import { getCategoryFromPath, getCategoryPath, updateDocumentSeo } from './utils/seo';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { ProductCard } from './components/ProductCard';
@@ -26,8 +27,10 @@ import { TrustBadges } from './components/TrustBadges';
 import { Footer } from './components/Footer';
 
 export default function App() {
-  // Navigation & Filter State
-  const [activeCategory, setActiveCategory] = useState<NicheCategory>('all');
+  // Navigation & Filter State (initialized from URL pathname for direct SEO landing)
+  const [activeCategory, setActiveCategory] = useState<NicheCategory>(() =>
+    typeof window !== 'undefined' ? getCategoryFromPath(window.location.pathname) : 'all'
+  );
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [sortBy, setSortBy] = useState<'lab' | 'discount' | 'rating' | 'price-asc' | 'price-desc'>('lab');
   const [flashDealsOnly, setFlashDealsOnly] = useState<boolean>(false);
@@ -44,9 +47,21 @@ export default function App() {
   const isFirstCategoryRender = useRef(true);
   const isFirstProductRender = useRef(true);
 
+  const handleSelectCategory = (category: NicheCategory) => {
+    setActiveCategory(category);
+    if (typeof window !== 'undefined') {
+      const targetPath = getCategoryPath(category);
+      if (window.location.pathname !== targetPath) {
+        window.history.pushState({ category }, '', targetPath);
+      }
+    }
+  };
+
   // Track browser history / hash navigation in SPA without page reload
   useEffect(() => {
     const handleRouteChange = () => {
+      const nextCategory = getCategoryFromPath(window.location.pathname);
+      setActiveCategory(nextCategory);
       const currentPath = `${window.location.pathname}${window.location.search}${window.location.hash}`;
       trackPageView(currentPath, document.title);
     };
@@ -65,8 +80,8 @@ export default function App() {
       isFirstCategoryRender.current = false;
       return;
     }
-    const categoryPath = activeCategory === 'all' ? '/' : `/category/${activeCategory}`;
-    trackPageView(categoryPath, `${document.title} - ${activeCategory}`);
+    const categoryPath = getCategoryPath(activeCategory);
+    trackPageView(categoryPath, document.title);
   }, [activeCategory]);
 
   // Track SPA product detail modal views
@@ -76,7 +91,7 @@ export default function App() {
       return;
     }
     if (selectedDetailProduct) {
-      trackPageView(`/product/${selectedDetailProduct.id}`, `${selectedDetailProduct.shortName} | Pickzoid.com`);
+      trackPageView(`/product/${selectedDetailProduct.id}`, `${selectedDetailProduct.shortName} | Topvory.com`);
     }
   }, [selectedDetailProduct]);
 
@@ -155,6 +170,11 @@ export default function App() {
     });
   }, [activeCategory, searchQuery, sortBy, flashDealsOnly]);
 
+  // Synchronize document title, canonical link, OG/meta tags, and Schema.org JSON-LD per category/product
+  useEffect(() => {
+    updateDocumentSeo(activeCategory, lang, filteredProducts, selectedDetailProduct);
+  }, [activeCategory, lang, filteredProducts, selectedDetailProduct]);
+
   const scrollToDeals = () => {
     const el = document.getElementById('products-section');
     if (el) {
@@ -168,7 +188,7 @@ export default function App() {
       {/* 1. HEADER */}
       <Header
         activeCategory={activeCategory}
-        onSelectCategory={setActiveCategory}
+        onSelectCategory={handleSelectCategory}
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
         compareCount={compareList.length}
@@ -181,7 +201,7 @@ export default function App() {
 
       {/* 2. HERO CRO BANNER */}
       <Hero
-        onSelectCategory={setActiveCategory}
+        onSelectCategory={handleSelectCategory}
         onOpenQuiz={() => setIsQuizOpen(true)}
         onJumpToDeals={scrollToDeals}
         totalProductsCount={PRODUCTS.length}
@@ -297,7 +317,7 @@ export default function App() {
                   : 'Hãy thử xóa từ khóa tìm kiếm hoặc bỏ chọn bộ lọc để xem đầy đủ danh mục.'}
               </p>
               <button
-                onClick={() => { setSearchQuery(''); setActiveCategory('all'); setFlashDealsOnly(false); }}
+                onClick={() => { setSearchQuery(''); handleSelectCategory('all'); setFlashDealsOnly(false); }}
                 className="px-5 py-2.5 rounded-xl bg-blue-600 text-white font-bold text-xs hover:bg-blue-700 transition cursor-pointer"
               >
                 {lang === 'en' ? 'Reset All Filters' : 'Đặt Lại Bộ Lọc'}
@@ -405,7 +425,7 @@ export default function App() {
 
       {/* 8. FOOTER WITH LEGAL & FTC DISCLOSURES */}
       <Footer
-        onSelectCategory={setActiveCategory}
+        onSelectCategory={handleSelectCategory}
         onOpenAffiliateGuide={() => setIsAffiliateGuideOpen(true)}
         lang={lang}
       />

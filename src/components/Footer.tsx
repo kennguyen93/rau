@@ -23,10 +23,10 @@ export const Footer: React.FC<FooterProps> = ({
           <div className="space-y-3 md:col-span-1">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-600 to-amber-500 flex items-center justify-center text-white font-black text-xs">
-                PZ
+                TV
               </div>
               <span className="font-heading font-black text-lg text-white tracking-tight">
-                PICKZOID<span className="text-blue-500">.COM</span>
+                TOPVORY<span className="text-blue-500">.COM</span>
               </span>
             </div>
             <p className="text-slate-400 text-xs leading-relaxed">
@@ -119,8 +119,8 @@ export const Footer: React.FC<FooterProps> = ({
             </strong>
             <p>
               {lang === 'en'
-                ? 'Pickzoid.com is a participant in the Amazon Services LLC Associates Program and various direct merchant affiliate programs. These programs are designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com and merchant web properties. When you purchase through our links, we may receive a commission at no additional cost to you. This does not impact our editorial independence or testing ratings.'
-                : 'Pickzoid.com tham gia chương trình tiếp thị liên kết Amazon Associates và các nhà bán lẻ trực tiếp tại Mỹ. Khi người mua click qua liên kết và đặt hàng thành công, chúng tôi có thể nhận được một khoản hoa hồng nhỏ mà người mua hoàn toàn không mất thêm bất kỳ chi phí nào.'}
+                ? 'Topvory.com is a participant in the Amazon Services LLC Associates Program and various direct merchant affiliate programs. These programs are designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com and merchant web properties. When you purchase through our links, we may receive a commission at no additional cost to you. This does not impact our editorial independence or testing ratings.'
+                : 'Topvory.com tham gia chương trình tiếp thị liên kết Amazon Associates và các nhà bán lẻ trực tiếp tại Mỹ. Khi người mua click qua liên kết và đặt hàng thành công, chúng tôi có thể nhận được một khoản hoa hồng nhỏ mà người mua hoàn toàn không mất thêm bất kỳ chi phí nào.'}
             </p>
           </div>
 
@@ -139,7 +139,7 @@ export const Footer: React.FC<FooterProps> = ({
         {/* BOTTOM COPYRIGHT */}
         <div className="border-t border-slate-800/80 pt-6 flex flex-wrap items-center justify-between gap-4 text-[11px] text-slate-400">
           <div>
-            © 2026 Pickzoid.com. All rights reserved. Built for high-conversion US consumer commerce.
+            © 2026 Topvory.com. All rights reserved. Built for high-conversion US consumer commerce.
           </div>
           <div className="flex items-center gap-4">
             <span className="hover:text-slate-200 cursor-pointer">Privacy Policy</span>
